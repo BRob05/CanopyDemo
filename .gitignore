@@ -1,0 +1,12 @@
+.idea/CanopyDemo.iml
+tests/__pycache__/test_login.cpython-311-pytest-8.2.0.pyc
+tests/__pycache__/temp.cpython-311.pyc
+tests/__pycache__/pytest_test.cpython-311-pytest-8.2.0.pyc
+tests/__pycache__/login_test.cpython-311-pytest-8.2.0.pyc
+pages/__pycache__/SwagLogin.cpython-311.pyc
+pages/__pycache__/__init__.cpython-311.pyc
+__pycache__/pytest_test.cpython-311-pytest-8.2.0.pyc
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/modules.xml
+.idea/misc.xml
+*__pycache__
