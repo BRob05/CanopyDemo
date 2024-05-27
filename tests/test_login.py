@@ -1,3 +1,8 @@
+import sys
+## For relative PATH'ing you'll want to ensure you add the project
+## to the system path. This will allow the Python interpreter to
+## find your project directories.
+sys.path.append(".")
 import pytest
 import time
 from selenium import webdriver
