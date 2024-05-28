@@ -12,10 +12,10 @@ class SwagLogin:
         self.driver.get(url)
 
     def enterUsername(self, username):
-        self.driver.find_element(self.username_field).send_keys(username)
+        self.driver.find_element(*self.username_field).send_keys(username)
 
     def enterPassword(self, password):
-        self.driver.find_element(self.password_field).send_keys(password)
+        self.driver.find_element(*self.password_field).send_keys(password)
 
     def clickLoginButton(self):
-        self.driver.find_element(self.login_button).click()
+        self.driver.find_element(*self.login_button).click()
