@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.edge.service import Service as EdgeService
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from pages.swaglogin import SwagLogin
-
+from Config.config import TestData
 
 @pytest.fixture()
 def driver():
@@ -22,9 +22,9 @@ def driver():
 def test_SuccessLogin(driver):
     login_page = SwagLogin(driver)
     
-    login_page.openSwagLabs("https://www.saucedemo.com/")
-    login_page.enterUsername("standard_user")
-    login_page.enterPassword("secret_sauce")
+    login_page.openSwagLabs(TestData.BASE_URL)
+    login_page.enterUsername(TestData.STANDARD_USER_NAME)
+    login_page.enterPassword(TestData.PASSWORD)
     login_page.clickLoginButton()
     
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//div[@class='app_logo']")))
@@ -33,9 +33,9 @@ def test_SuccessLogin(driver):
 def test_NoUsername(driver):
     login_page = SwagLogin(driver)
     
-    login_page.openSwagLabs("https://www.saucedemo.com/")
+    login_page.openSwagLabs(TestData.BASE_URL)
     login_page.enterUsername("")
-    login_page.enterPassword("secret_sauce")
+    login_page.enterPassword(TestData.PASSWORD)
     login_page.clickLoginButton()
 
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//h3[@data-test='error']")))
@@ -47,8 +47,8 @@ def test_NoUsername(driver):
 def test_NoPassword(driver):
     login_page = SwagLogin(driver)
     
-    login_page.openSwagLabs("https://www.saucedemo.com/")
-    login_page.enterUsername("standard_user")
+    login_page.openSwagLabs(TestData.BASE_URL)
+    login_page.enterUsername(TestData.STANDARD_USER_NAME)
     login_page.enterPassword("")
     login_page.clickLoginButton()
 
@@ -61,9 +61,9 @@ def test_NoPassword(driver):
 def test_LockedOutUser(driver):
     login_page = SwagLogin(driver)
     
-    login_page.openSwagLabs("https://www.saucedemo.com/")
-    login_page.enterUsername("locked_out_user")
-    login_page.enterPassword("secret_sauce")
+    login_page.openSwagLabs(TestData.BASE_URL)
+    login_page.enterUsername(TestData.LOCKED_USER_NAME)
+    login_page.enterPassword(TestData.PASSWORD)
     login_page.clickLoginButton()
 
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//h3[@data-test='error']")))
@@ -75,7 +75,7 @@ def test_LockedOutUser(driver):
 def test_InvalidCredentials(driver):
     login_page = SwagLogin(driver)
     
-    login_page.openSwagLabs("https://www.saucedemo.com/")
+    login_page.openSwagLabs(TestData.BASE_URL)
     login_page.enterUsername("sdfgfgr")
     login_page.enterPassword("rg5345")
     login_page.clickLoginButton()
